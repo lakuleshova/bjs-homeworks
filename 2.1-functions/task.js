@@ -60,75 +60,42 @@ function getAverageScore(data) {
     if (Object.values(data) == 0) {
         averageData.average = 0;
     } else {
-    let averageScore = getAverageMark;
-    averageData = {
-        algebra: averageScore(data.algebra),
-        geometry: averageScore(data.geometry),
-        russian: averageScore(data.russian),
-        physics: averageScore(data.physics),
-        music: averageScore(data.music),
-        english: averageScore(data.english),
-        poetry: averageScore(data.poetry),
-        chemistry: averageScore(data.chemistry),
-        french: averageScore(data.french)
+        let sum = 0;
+        for (let subject in data) {
+            let value = getAverageMark(data[subject]);
+            averageData = `${subject}: ${value}`;
+            sum += parseFloat(data[subject]);
+            average = [sum] / Object.values(data).length;
+            console.log(averageData);
+        }
+        console.log(`average: ${average}`);
     }
-    averageData.average = averageScore(Object.values(averageData));
-}
-    return averageData;
 }
 
-console.log(getAverageScore());
+getAverageScore();
 
 function getAverageMark(marks) {
-    let averageMark;
-
-    if (marks.length == 0) {
-        averageMark = 0;
-    } else if (marks.length > 0) {
-        let sumMarks = marks.reduce((a, b) => a + b);
-        averageMark = sumMarks / marks.length;
-    }
-
+    let sumMarks = marks.reduce((a, b) => a + b);
+    let averageMark = sumMarks / marks.length;
     return averageMark;
 }
 
 // Задача 3
 
 function getPersonData(secretData) {
-    secretData = {
-        aaa: 1,
-        bbb: 0
-    }
+    secretData = getDecodedValue();
     return secretData;
 }
+console.log(getPersonData());
 
-getDecodedValue(secret) {
+function getDecodedValue(secret) {
     secret = {
-        firstName: 'Эмильо',
-        lastName: 'Родриго'
+        aaa: 0,
+        bbb: 1
     }
-    let condition = Object.values(getPersonData());
-    let name;
-    if (condition[0] == 1 && condition[1] == 1) {
-        name = {
-            firstName: secret.firstName,
-            lastName: secret.firstName
-        }
-    } else if (condition[0] == 1 && condition[1] == 0) {
-        name = {
-            firstName: secret.firstName,
-            lastName: secret.lastName
-        }
-    } else if (condition[0] == 0 && condition[1] == 1) {
-        name = {
-            firstName: secret.lastName,
-            lastName: secret.firstName
-        }
-    } else if (condition[0] == 0 && condition[1] == 0) {
-        name = {
-            firstName: secret.lastName,
-            lastName: secret.lastName
-        }
-    }
+    let a = (secret.aaa == 0) ? 'Родриго' : 'Эмильо';
+    let b = (secret.bbb == 0) ? 'Родриго' : 'Эмильо';
+    let name = `{firstName: ${a}, lastName: ${b}}`;
     return name;
 }
+    
