@@ -15,11 +15,15 @@ function reverseString(rev) {
     return rev.split('').reverse().join('');
 }
 
+// код для задачи №2 писать здесь
 
 function getAverageMark(marks) {
-    // код для задачи №2 писать здесь
-    // return averageMark
+    let sumMarks = marks.reduce((a, b) => a + b);
+    let average = sumMarks / marks.length;
+    let roundedAverage = Math.round(average);
+    return roundedAverage;
 }
+
 
 function checkBirthday(birthday) {
     // код для задачи №3 писать здесь
