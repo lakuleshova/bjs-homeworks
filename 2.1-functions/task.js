@@ -41,35 +41,36 @@ function showSolutionsMessage(a, b, c) {
 }
 
 // Задача 2
+data = {
+    algebra: [4, 5, 5, 4],
+    geometry: [2, 5],
+    russian: [3, 3, 4, 5],
+    physics: [5, 5],
+    music: [ 2, 2, 5],
+    english: [4, 4, 3, 3],
+    poetry: [5, 3, 4],
+    chemistry: [2],
+    french: [4, 4]
+}
 
-function getAverageScore(data) {
-    data = {
-        algebra: [4, 5, 5, 4],
-        geometry: [2, 5],
-        russian: [3, 3, 4, 5],
-        physics: [5, 5],
-        music: [ 2, 2, 5],
-        english: [4, 4, 3, 3],
-        poetry: [5, 3, 4],
-        chemistry: [2],
-        french: [4, 4]
-    }
-
-    let averageData = new Object();
-
+function getAverageScore() {
     if (Object.values(data) == 0) {
-        averageData.average = 0;
+        data = 0;
     } else {
-        let sum = 0;
-        for (let subject in data) {
-            let value = getAverageMark(data[subject]);
-            averageData = `${subject}: ${value}`;
-            sum += parseFloat(data[subject]);
-            average = [sum] / Object.values(data).length;
-            console.log(averageData);
+        data = {
+            algebra: getAverageMark(data.algebra),
+            geometry: getAverageMark(data.geometry),
+            russian: getAverageMark(data.russian),
+            physics: getAverageMark(data.physics),
+            music: getAverageMark(data.music),
+            english: getAverageMark(data.english),
+            poetry: getAverageMark(data.poetry),
+            chemistry: getAverageMark(data.chemistry),
+            french: getAverageMark(data.french)
         }
-        console.log(`average: ${average}`);
-    }
+        data.average = getAverageMark(Object.values(data));
+        console.log(data);
+    }    
 }
 
 getAverageScore();
