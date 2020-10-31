@@ -18,10 +18,15 @@ function reverseString(rev) {
 // код для задачи №2 писать здесь
 
 function getAverageMark(marks) {
-    let sumMarks = marks.reduce((a, b) => a + b);
-    let average = sumMarks / marks.length;
-    let roundedAverage = Math.round(average);
-    return roundedAverage;
+    if (marks.length == 0) {
+        let roundedAverage = 0;
+        return roundedAverage;
+    } else {
+        let sumMarks = marks.reduce((a, b) => a + b);
+        let average = sumMarks / marks.length;
+        let roundedAverage = Math.round(average); 
+        return roundedAverage;
+    }
 }
 
 
